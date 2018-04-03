@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.ExceptionHandling;
 using System.Web.Http.Filters;
+using Unity;
 
 namespace WebApiUtil
 {
@@ -12,6 +14,9 @@ namespace WebApiUtil
         {
             // Configuration et services API Web
             config.Services.Replace(typeof(IFilterProvider), new UnityFilterProvider(UnityConfig.Container));
+
+            if (UnityConfig.Container.IsRegistered(typeof(IExceptionHandler)))
+                config.Services.Replace(typeof(IExceptionHandler), UnityConfig.Container.Resolve<IExceptionHandler>());
 
             // Itinéraires de l'API Web
             config.MapHttpAttributeRoutes();

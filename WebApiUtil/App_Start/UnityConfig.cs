@@ -1,8 +1,10 @@
 using Microsoft.Practices.Unity.Configuration;
 using System;
+using System.Web.Http.ExceptionHandling;
 using System.Web.Http.Filters;
 using Unity;
 using WebApiUtil.Filters;
+using WebApiUtil.Handlers;
 
 namespace WebApiUtil
 {
@@ -42,7 +44,6 @@ namespace WebApiUtil
             container.RegisterType<IFilter, NotImplementedExceptionFilter>(nameof(NotImplementedException));
 
             //Types registration
-
 
             //Overrides from web.config
             container.LoadConfiguration();

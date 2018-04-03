@@ -217,6 +217,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Handlers\AbstractExceptionHandler.cs" />
+    <Compile Include="Handlers\ExternExceptionHandler.cs" />
+    <Compile Include="Handlers\InternExceptionHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
