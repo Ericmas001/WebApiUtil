@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Filters;
 
 namespace WebApiUtil
 {
@@ -10,6 +11,7 @@ namespace WebApiUtil
         public static void Register(HttpConfiguration config)
         {
             // Configuration et services API Web
+            config.Services.Replace(typeof(IFilterProvider), new UnityFilterProvider(UnityConfig.Container));
 
             // Itinéraires de l'API Web
             config.MapHttpAttributeRoutes();

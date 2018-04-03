@@ -1,6 +1,8 @@
+using Microsoft.Practices.Unity.Configuration;
 using System;
-
+using System.Web.Http.Filters;
 using Unity;
+using WebApiUtil.Filters;
 
 namespace WebApiUtil
 {
@@ -36,12 +38,14 @@ namespace WebApiUtil
         /// </remarks>
         public static void RegisterTypes(IUnityContainer container)
         {
-            // NOTE: To load from web.config uncomment the line below.
-            // Make sure to add a Unity.Configuration to the using statements.
-            // container.LoadConfiguration();
+            //Filters registration
+            container.RegisterType<IFilter, NotImplementedExceptionFilter>(nameof(NotImplementedException));
 
-            // TODO: Register your type's mappings here.
-            // container.RegisterType<IProductRepository, ProductRepository>();
+            //Types registration
+
+
+            //Overrides from web.config
+            container.LoadConfiguration();
         }
     }
 }
